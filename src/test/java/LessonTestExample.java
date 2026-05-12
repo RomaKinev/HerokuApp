@@ -14,7 +14,7 @@ public class LessonTestExample {
     WebDriver driver;
 
     @BeforeMethod
-    public void setup(){
+    public void setup() {
         // Options - настройка нашего браузера перез запуском
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--start-maximized");
@@ -25,16 +25,16 @@ public class LessonTestExample {
     }
 
     @Test
-    public void checkAddElements(){
-       driver.get("https://the-internet.herokuapp.com/add_remove_elements/");
-       driver.findElement(By.xpath("//button[text()='Add Element']")).click();
-       driver.findElement(By.xpath("//button[text()='Add Element']")).click();
-       int countDelete = driver.findElements(By.xpath("//button[text()='Delete']")).size();
-       Assert.assertEquals(countDelete,2);
+    public void checkAddElements() {
+        driver.get("https://the-internet.herokuapp.com/add_remove_elements/");
+        driver.findElement(By.xpath("//button[text()='Add Element']")).click();
+        driver.findElement(By.xpath("//button[text()='Add Element']")).click();
+        int countDelete = driver.findElements(By.xpath("//button[text()='Delete']")).size();
+        Assert.assertEquals(countDelete, 2);
     }
 
     @AfterMethod
-    public void tearDown(){
+    public void tearDown() {
         driver.quit();
     }
 }
