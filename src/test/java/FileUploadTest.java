@@ -7,6 +7,8 @@ import org.testng.annotations.Test;
 import java.io.File;
 import java.time.Duration;
 
+import static org.testng.Assert.assertEquals;
+
 public class FileUploadTest extends BaseTest {
 
     @Test
@@ -17,6 +19,6 @@ public class FileUploadTest extends BaseTest {
         driver.findElement(By.id("file-upload")).sendKeys(file.getAbsolutePath());
         driver.findElement(By.id("file-submit")).click();
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("uploaded-files")));
-        Assert.assertEquals(driver.findElement(By.id("uploaded-files")).getText(), "1.html", "The text is not the same");
+        assertEquals(driver.findElement(By.id("uploaded-files")).getText(), "1.html", "The text is not the same");
     }
 }

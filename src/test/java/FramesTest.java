@@ -6,6 +6,8 @@ import org.testng.annotations.Test;
 
 import java.time.Duration;
 
+import static org.testng.Assert.assertEquals;
+
 public class FramesTest extends BaseTest {
 
     @Test
@@ -15,7 +17,7 @@ public class FramesTest extends BaseTest {
         driver.findElement(By.xpath("//a[@href='/iframe']")).click();
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h3")));
         driver.switchTo().frame("mce_0_ifr");
-        Assert.assertEquals(driver.findElement(By.xpath("//body[@data-id]")).getText(),
+        assertEquals(driver.findElement(By.xpath("//body[@data-id]")).getText(),
                 "Your content goes here.",
                 "The text is not the same");
     }

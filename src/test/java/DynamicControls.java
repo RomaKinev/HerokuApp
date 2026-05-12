@@ -14,17 +14,7 @@ import java.time.Duration;
 
 import static org.testng.Assert.*;
 
-public class DynamicControls {
-
-    WebDriver driver;
-
-    @BeforeMethod
-    public void setup(){
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--start-maximized");
-        driver = new ChromeDriver(options);
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-    }
+public class DynamicControls extends BaseTest{
 
     @Test
     public void checkDynamicControls(){
@@ -37,6 +27,8 @@ public class DynamicControls {
         driver.findElement(By.xpath("//button[@onclick='swapInput()']")).click();
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("message")));
         assertTrue(driver.findElement(By.xpath("//input")).isEnabled(),"Input is Disabled");
+
+// Примеры оставил для себя
 
         //driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(0));
 //        int numberOfElements = driver.findElements(By.cssSelector("[type='checkbox']")).size();
@@ -66,10 +58,5 @@ public class DynamicControls {
 //        actions.keyUp(Keys.CONTROL).perform();
 //        actions.moveToElement(checkbox).perform();//навести на элемент
 //        actions.pause(500);
-    }
-
-    @AfterMethod
-    public void tearDown (){
-        driver.quit();
     }
 }

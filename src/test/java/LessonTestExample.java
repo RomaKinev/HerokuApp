@@ -9,6 +9,8 @@ import org.testng.annotations.Test;
 
 import java.time.Duration;
 
+import static org.testng.Assert.assertEquals;
+
 public class LessonTestExample {
 
     WebDriver driver;
@@ -30,7 +32,7 @@ public class LessonTestExample {
         driver.findElement(By.xpath("//button[text()='Add Element']")).click();
         driver.findElement(By.xpath("//button[text()='Add Element']")).click();
         int countDelete = driver.findElements(By.xpath("//button[text()='Delete']")).size();
-        Assert.assertEquals(countDelete, 2);
+        assertEquals(countDelete, 2);
     }
 
     @AfterMethod
