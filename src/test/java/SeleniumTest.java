@@ -1,4 +1,6 @@
-import org.openqa.selenium.*;
+import org.openqa.selenium.Cookie;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WindowType;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterMethod;
@@ -13,7 +15,7 @@ public class SeleniumTest {
     WebDriver driver;
 
     @BeforeMethod
-    public void setup(){
+    public void setup() {
         // Options - настройка нашего браузера перез запуском
         ChromeOptions options = new ChromeOptions();
         // открытие браузера во весь экран
@@ -37,10 +39,10 @@ public class SeleniumTest {
     }
 
     @Test
-    public void test(){
+    public void test() {
         driver.get("https://www.onliner.by/");
         Set<Cookie> cookies = driver.manage().getCookies();
-        for (Cookie cookie: cookies){
+        for (Cookie cookie : cookies) {
             System.out.println(cookie.getName() + " :" + cookie.getValue());
         }
         Cookie authCookie = new Cookie("session_id", "value");
@@ -49,7 +51,7 @@ public class SeleniumTest {
     }
 
     @Test
-    public void test1(){
+    public void test1() {
         driver.get("https://www.onliner.by/");
         System.out.println(driver.getTitle());
         System.out.println(driver.getCurrentUrl());
@@ -64,7 +66,7 @@ public class SeleniumTest {
     }
 
     @AfterMethod
-    public void tearDown(){
+    public void tearDown() {
         driver.quit();
     }
 }
